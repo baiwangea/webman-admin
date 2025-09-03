@@ -1,0 +1,68 @@
+<?php
+// +----------------------------------------------------------------------
+// | saiadmin [ saiadmin快速开发框架 ]
+// +----------------------------------------------------------------------
+// | Author: your name
+// +----------------------------------------------------------------------
+namespace plugin\bank\app\model;
+
+use plugin\saiadmin\basic\BaseModel;
+
+/**
+ * 用户矿池出金表模型
+ */
+class ClaimMine extends BaseModel
+{
+    protected $deleteTime = false;
+    protected $updateTime = false;
+    
+    /**
+     * 数据表主键
+     * @var string
+     */
+    protected $pk = 'id';
+
+    /**
+     * 数据库表名称
+     * @var string
+     */
+    protected $table = 'claim_mine';
+
+    /**
+     * 数据库连接
+     * @var string
+     */
+    protected $connection = 'mysql2';
+
+    /**
+     * 用户地址 搜索
+     */
+    public function searchUserAddrAttr($query, $value)
+    {
+        $query->where('user_addr', 'like', '%'.$value.'%');
+    }
+
+    /**
+     * 用户ID 搜索
+     */
+    public function searchUserIdAttr($query, $value)
+    {
+        $query->where('user_id', $value);
+    }
+
+    /**
+     * 状态 搜索
+     */
+    public function searchStatusAttr($query, $value)
+    {
+        $query->where('status', $value);
+    }
+
+    /**
+     * 合约地址 搜索
+     */
+    public function searchContractAddrAttr($query, $value)
+    {
+        $query->where('contract_addr', 'like', '%'.$value.'%');
+    }
+}
